@@ -48,7 +48,7 @@ final class BackendApiProvider
   }
 }
 
-String _$backendApiHash() => r'3500771d97471b78d3a7d641a1efc2b19b07dd7f';
+String _$backendApiHash() => r'8f7aa405dcd89015fd94a5225fc1c125e9ef0d54';
 
 @ProviderFor(Chat)
 const chatProvider = ChatProvider._();
@@ -81,7 +81,7 @@ final class ChatProvider extends $NotifierProvider<Chat, List<Message>> {
   }
 }
 
-String _$chatHash() => r'9b8285f42eba5f7dd0df23f85a662a784399214d';
+String _$chatHash() => r'a4d82b1b0267d824571135cf4daa0c4a6d8dbe0f';
 
 abstract class _$Chat extends $Notifier<List<Message>> {
   List<Message> build();

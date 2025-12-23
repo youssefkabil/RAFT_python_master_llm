@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kabil_jedraoui/core/widgets/glass_container.dart';
 import 'package:kabil_jedraoui/features/chat/presentation/chat_bubble.dart';
 import 'package:kabil_jedraoui/features/chat/provider/chat_provider.dart';
-import 'package:kabil_jedraoui/features/settings/settings_dialog.dart';
 
 class ChatScreen extends ConsumerStatefulWidget {
   const ChatScreen({super.key});
@@ -78,17 +77,6 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
             ],
           ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings, color: Colors.white),
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) => const SettingsDialog(),
-              );
-            },
-          ),
-        ],
       ),
       body: Container(
         decoration: const BoxDecoration(
