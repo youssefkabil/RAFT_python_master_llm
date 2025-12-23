@@ -1,31 +1,30 @@
 
 import 'dart:convert';
-import 'package:dio/dio.dart';
+import 'package:http/http.dart' as http;
 
 class ApiService {
-  final Dio _dio = Dio();
   // Hardcoded based on user request
   final String _baseUrl = 'https://nonpredictable-smirkingly-marva.ngrok-free.dev';
 
   Stream<String> generateStream(String prompt) async* {
-
+    final client = http.Client();
     try {
-      final response = await _dio.post(
-        '$_baseUrl/generate-stream',
-        data: {'prompt': prompt},
-        options: Options(
-          responseType: ResponseType.stream,
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'text/plain', // Expecting text chunks
-          },
-        ),
-      );
+      final request = http.Request('POST', Uri.parse('$_baseUrl/generate-stream'));
+      request.headers['Content-Type'] = 'application/json';
+      request.body = jsonEncode({'prompt': prompt});
 
-      final stream = response.data.stream.cast<List<int>>();
-      yield* stream.transform(utf8.decoder);
+      final response = await client.send(request);
+
+      // Using transform(utf8.decoder) directly on the stream.
+      // This usually works better for http package than Dio for text/event-stream or chunked transfer.
+      final stream = response.stream.transform(utf8.decoder);
+      
+      yield* stream;
+
     } catch (e) {
       throw Exception('API Error: $e');
+    } finally {
+      client.close();
     }
   }
 }

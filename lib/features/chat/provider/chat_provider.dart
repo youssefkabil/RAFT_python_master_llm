@@ -44,8 +44,11 @@ class Chat extends _$Chat {
         final currentMessages = [...state];
         final lastMessage = currentMessages[aiMessageIndex];
         
-        // Clean accumulated text slightly (without trim) to remove ghost chars as they appear
-        final newContent = _cleanResponse(lastMessage.content + token, isFinal: false);
+        // Append raw token first
+        String newContent = lastMessage.content + token;
+
+        // Apply cleaning to the ENTIRE content, targeting the end
+        newContent = newContent.replaceAll(RegExp(r'[^\x00-\x7F]+$'), '');
         
         currentMessages[aiMessageIndex] = lastMessage.copyWith(
           content: newContent,
@@ -56,8 +59,11 @@ class Chat extends _$Chat {
       // 4. Final cleanup (trim)
       final currentMessages = [...state];
       final lastMessage = currentMessages[aiMessageIndex];
+      // Final sanitize ensuring everything is clean
+      String finalContent = lastMessage.content.replaceAll(RegExp(r'[^\x00-\x7F]+$'), '').trim();
+      
       currentMessages[aiMessageIndex] = lastMessage.copyWith(
-        content: _cleanResponse(lastMessage.content, isFinal: true),
+        content: finalContent,
       );
       state = currentMessages;
 
