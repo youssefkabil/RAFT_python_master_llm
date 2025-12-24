@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti-Gravity Tutor | Project Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            --accent-color: #a855f7; /* Purple Accent */
+            --text-color: #ffffff;
+            --text-secondary: #a1a1aa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-color);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Utility */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            background: linear-gradient(to right, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Features Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(168, 85, 247, 0.2);
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        /* File Tree */
+        .tree-view {
+            font-family: 'Courier New', monospace;
+            padding: 2rem;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+        }
+
+        .tree-item {
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .tree-item::before {
+            content: "├─";
+            position: absolute;
+            left: -20px;
+            color: var(--text-secondary);
+        }
+        
+        .tree-item.last::before {
+             content: "└─";
+        }
+
+        .folder {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        .file {
+            color: #60a5fa;
+        }
+
+        /* Dependencies Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: var(--text-secondary);
+        }
+
+        th, td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        th {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Anti-Gravity Tutor</h1>
+        <p class="subtitle">Personal Python Tutor Project • Created by <strong>Kabil Jedraoui</strong></p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Project Overview -->
+        <section>
+            <div class="glass-panel" style="padding: 2.5rem;">
+                <h2>Overview</h2>
+                <p>
+                    <strong>Anti-Gravity Tutor</strong> is a state-of-the-art Flutter application designed to assist students with Python programming. 
+                    It combines a futuristic "Glassmorphism" UI with robust state management (Riverpod) and high-performance networking (Dio) 
+                    to deliver real-time, AI-powered coding assistance.
+                </p>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section>
+            <h2>Key Features</h2>
+            <div class="grid">
+                <div class="glass-panel card">
+                    <h3>🔮 Modern Glassy UI</h3>
+                    <p>Immersive dark-themed interface with blur effects, gradients, and smooth animations powered by custom GlassContainer widgets.</p>
+                </div>
+                <div class="glass-panel card">
+                    <h3>⚡ Reactive State</h3>
+                    <p>Built with <strong>Riverpod 3.0</strong> for testable, scalable, and reactive state management, ensuring UI consistency across the app.</p>
+                </div>
+                <div class="glass-panel card">
+                    <h3>🤖 AI Integration</h3>
+                    <p>Seamless integration with a custom LLM backend using <strong>Dio</strong>, featuring interceptors and structured error handling.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section>
+            <h2>Dependencies</h2>
+            <div class="glass-panel" style="padding: 0;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Package</th>
+                            <th>Version</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>flutter_riverpod</td>
+                            <td>^3.0.3</td>
+                            <td>State Management</td>
+                        </tr>
+                        <tr>
+                            <td>dio</td>
+                            <td>^5.9.0</td>
+                            <td>HTTP Client</td>
+                        </tr>
+                        <tr>
+                            <td>flutter_markdown</td>
+                            <td>^0.7.7</td>
+                            <td>Markdown Rendering</td>
+                        </tr>
+                        <tr>
+                            <td>google_fonts</td>
+                            <td>^6.3.3</td>
+                            <td>Custom Typography</td>
+                        </tr>
+                        <tr>
+                            <td>cupertino_icons</td>
+                            <td>^1.0.8</td>
+                            <td>Icon Set</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Project Structure -->
+        <section>
+            <h2>Project Architecture</h2>
+            <div class="glass-panel tree-view">
+                <div><span class="folder">lib/</span></div>
+                <div class="tree-item"><span class="folder">core/</span></div>
+                <div class="tree-item" style="margin-left: 40px;"><span class="folder">services/</span></div>
+                <div class="tree-item" style="margin-left: 60px;"><span class="file">api_service.dart</span></div>
+                <div class="tree-item" style="margin-left: 40px;"><span class="folder">widgets/</span></div>
+                <div class="tree-item" style="margin-left: 60px;"><span class="file">glass_container.dart</span></div>
+                
+                <div class="tree-item"><span class="folder">features/</span></div>
+                <div class="tree-item" style="margin-left: 40px;"><span class="folder">chat/</span></div>
+                <div class="tree-item" style="margin-left: 60px;"><span class="folder">models/</span></div>
+                <div class="tree-item" style="margin-left: 80px;"><span class="file">message.dart</span></div>
+                <div class="tree-item" style="margin-left: 60px;"><span class="folder">presentation/</span></div>
+                <div class="tree-item" style="margin-left: 80px;"><span class="file">chat_bubble.dart</span></div>
+                <div class="tree-item" style="margin-left: 80px;"><span class="file">chat_screen.dart</span></div>
+                <div class="tree-item" style="margin-left: 60px;"><span class="folder">provider/</span></div>
+                <div class="tree-item" style="margin-left: 80px;"><span class="file">chat_provider.dart</span></div>
+                
+                <div class="tree-item last"><span class="file">main.dart</span></div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
